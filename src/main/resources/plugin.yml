@@ -1,0 +1,9 @@
+name: LavaRTP
+main: ru.lavafrai.LavaRTP
+version: 1.0
+author: lava_frai
+prefix: LRTP
+commands:
+  rtp:
+    description: Teleport to random point
+    usage: /<command>

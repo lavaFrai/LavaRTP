@@ -1,0 +1,36 @@
+plugins {
+    id 'java'
+}
+
+group 'ru.lava_frai'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+    maven {
+        name = "PaperMC"
+        url = "https://repo.papermc.io/repository/maven-public/"
+    }
+    maven {
+        name = "PlaceholderAPI"
+        url = 'https://repo.extendedclip.com/content/repositories/placeholderapi/'
+    }
+}
+
+dependencies {
+    compileOnly 'com.destroystokyo.paper:paper-api:1.16.5-R0.1-SNAPSHOT' // PaperMC
+    compileOnly 'me.clip:placeholderapi:2.11.1' // API плагина PlaceholderAPI
+    compileOnly 'org.projectlombok:lombok:1.18.24' // Lombok API
+    annotationProcessor 'org.projectlombok:lombok:1.18.24' // Lombok процессор
+}
+
+task copyToDevEnv_1_16_5() {
+    doLast {
+        copy {
+            from "build/libs/LavaRTP-1.0-SNAPSHOT.jar"
+            into "../Server/plugins/"
+        }
+    }
+}
+
+build.finalizedBy copyToDevEnv_1_16_5
